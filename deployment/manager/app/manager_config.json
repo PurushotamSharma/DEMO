@@ -1,0 +1,197 @@
+{
+  "pages": {
+    "map": {
+      "card": {
+        "default": {
+          "exclude": [
+            "notes"
+          ]
+        },
+        "assetTypes": {
+          "WeatherAsset": {
+            "exclude": [
+              "location",
+              "notes",
+              "model",
+              "manufacturer"
+            ]
+          }
+        }
+      }
+    },
+    "rules": {
+      "rules": {
+        "controls": {
+          "allowedLanguages": ["JSON", "FLOW", "GROOVY"],
+          "allowedActionTargetTypes": {
+            "actions": {
+              "email": [
+                "CUSTOM", "USER"
+              ],
+              "push": [
+                "ASSET", "USER"
+              ]
+            }
+          }
+        },
+        "descriptors": {
+          "all": {
+            "excludeAssets": [
+              "TradfriLightAsset",
+              "TradfriPlugAsset",
+              "ArtnetLightAsset"
+            ],
+            "assets": {
+              "*": {
+                "excludeAttributes": [
+                  "location"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "assets": {
+      "tree": {
+        "add": {
+          "typesParent": {
+            "default": {
+              "exclude": [
+                "TradfriLightAsset",
+                "TradfriPlugAsset",
+                "ArtnetLightAsset",
+                "ArtnetAgent",
+                "MacroAgent",
+                "ControllerAgent",
+                "KNXAgent",
+                "ZWAgent",
+                "TradfriAgent",
+                "TimerAgent",
+                "VelbusTcpAgent",
+                "VelbusSerialAgent"
+              ]
+            }
+          }
+        }
+      },
+      "viewer": {
+        "assetTypes": {
+          "WeatherAsset": {
+            "viewerStyles": {},
+            "panels": [
+              {
+                "type": "group",
+                "title": "underlyingAssets"
+              },
+              {
+                "type": "info",
+                "title": "location",
+                "properties": {
+                  "include": []
+                },
+                "attributes": {
+                  "include": [
+                    "location"
+                  ],
+                  "itemConfig": {
+                    "location": {
+                      "label": ""
+                    }
+                  }
+                }
+              },
+              {
+                "type": "info",
+                "hideOnMobile": true,
+                "properties": {
+                  "include": []
+                },
+                "attributes": {
+                  "include": [
+                    "notes",
+                    "manufacturer",
+                    "model"
+                  ]
+                }
+              },
+              {
+                "type": "info",
+                "title": "Weather data",
+                "attributes": {
+                  "exclude": [
+                    "location",
+                    "radiation",
+                    "rainfall",
+                    "uVIndex",
+                    "currentWeather",
+                    "notes",
+                    "manufacturer",
+                    "model"
+                  ]
+                },
+                "properties": {
+                  "include": []
+                }
+              },
+              {
+                "type": "info",
+                "title": "Extra details",
+                "column": 1,
+                "properties": {
+                  "include": []
+                },
+                "attributes": {
+                  "include": [
+                    "rainfall",
+                    "uVIndex"
+                  ]
+                }
+              },
+              {
+                "type": "history",
+                "column": 1
+              },
+              {
+                "type": "linkedUsers",
+                "column": 1
+              }
+            ]
+          }
+        },
+        "historyConfig": {
+          "table": {
+            "attributeNames": {
+              "optimiseTarget": {
+                "columns": [
+                  {
+                    "header": "Optimise target",
+                    "type": "prop",
+                    "path": "$."
+                  },
+                  {
+                    "header": "Timestamp",
+                    "type": "timestamp"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "realms": {
+    "default": {
+      "appTitle": "ACME IoT",
+      "headers": [
+        "map", "assets", "rules", "insights", "language", "users", "roles", "account", "logs", "logout"
+      ],
+      "styles": ":host > * {--or-app-color2: #F9F9F9; --or-app-color3: #22211f; --or-app-color4: #1b5630; --or-app-color5: #CCCCCC;}",
+      "logo": "/images/logo.png",
+      "logoMobile": "/images/logo-mobile.png",
+      "favicon": "/images/favicon.png",
+      "language": "en"
+    }
+  }
+}
